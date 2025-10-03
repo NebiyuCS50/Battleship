@@ -40,5 +40,20 @@ class gameBoard {
     return this.ships.every((s) => s.ship.isSunk());
   }
 }
+class player {
+  constructor(name) {
+    this.name = name || "player";
+    this.gameBoard = new gameBoard();
+  }
+  placeShip(length, x, y) {
+    this.gameBoard.placeShip(length, x, y);
+  }
+  attack(opponent, x, y) {
+    return opponent.gameBoard.receiveAttack(x, y);
+  }
+  allShipsSunk() {
+    return this.gameBoard.allShipsSunk();
+  }
+}
 
-module.exports = { ship, gameBoard };
+module.exports = { ship, gameBoard, player };
