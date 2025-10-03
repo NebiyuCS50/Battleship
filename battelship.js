@@ -14,3 +14,15 @@ class ship {
     return this.sunk;
   }
 }
+
+class gameBoard {
+  constructor() {
+    this.ships = [];
+  }
+  placeShip(length, x, y) {
+    const newShip = new ship(length);
+    this.ships.push({ ship: newShip, position: { x, y } });
+  }
+}
+
+module.exports = { ship, gameBoard };
