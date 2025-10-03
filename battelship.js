@@ -36,6 +36,9 @@ class gameBoard {
       return "Miss";
     }
   }
+  allShipsSunk() {
+    return this.ships.every((s) => s.ship.isSunk());
+  }
 }
 
 module.exports = { ship, gameBoard };
