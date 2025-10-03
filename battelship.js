@@ -18,10 +18,23 @@ class ship {
 class gameBoard {
   constructor() {
     this.ships = [];
+    this.missedAttacks = [];
   }
   placeShip(length, x, y) {
     const newShip = new ship(length);
     this.ships.push({ ship: newShip, position: { x, y } });
+  }
+  receiveAttack(x, y) {
+    const targetShip = this.ships.find(
+      (s) => s.position.x === x && s.position.y === y
+    );
+    if (targetShip) {
+      targetShip.ship.hit();
+      return "Hit";
+    } else {
+      this.missedAttacks.push({ x, y });
+      return "Miss";
+    }
   }
 }
 
