@@ -1,18 +1,26 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BattleShip</title>
+    <title>Battleship</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="container">
-      <h2>Opponent Board</h2>
-      <div id="opponentBoard" class="board"></div>
+    <h1>Battleship</h1>
+    <div id="difficulty">
+      <button data-level="easy">Easy (20 moves)</button>
+      <button data-level="medium">Medium (10 moves)</button>
+      <button data-level="hard">Hard (6 moves)</button>
     </div>
-    <div class="container">
-      <h2>Your Board</h2>
-      <div id="playerBoard" class="board"></div>
+    <button id="new-game">New Game</button>
+    <div class="boards">
+      <div>
+        <h2>Computer's Board</h2>
+        <div id="computer-board" class="board"></div>
+        <p id="moves-left">Moves left:</p>
+      </div>
     </div>
+
+    <script type="module" src="./gamecontroller.js"></script>
   </body>
 </html>
