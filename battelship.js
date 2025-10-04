@@ -1,4 +1,4 @@
-class ship {
+export class ship {
   constructor(length) {
     this.length = length;
     this.hitCount = 0;
@@ -15,7 +15,7 @@ class ship {
   }
 }
 
-class gameBoard {
+export class gameBoard {
   constructor() {
     this.ships = [];
     this.missedAttacks = [];
@@ -25,9 +25,10 @@ class gameBoard {
     this.ships.push({ ship: newShip, position: { x, y } });
   }
   receiveAttack(x, y) {
-    const targetShip = this.ships.find(
-      (s) => s.position.x === x && s.position.y === y
+    const targetShip = this.ships.find((s) =>
+      s.position.some((p) => p.x === x && p.y === y)
     );
+
     if (targetShip) {
       targetShip.ship.hit();
       return "Hit";
@@ -40,7 +41,7 @@ class gameBoard {
     return this.ships.every((s) => s.ship.isSunk());
   }
 }
-class player {
+export class player {
   constructor(name) {
     this.name = name || "player";
     this.gameBoard = new gameBoard();
@@ -55,5 +56,3 @@ class player {
     return this.gameBoard.allShipsSunk();
   }
 }
-
-module.exports = { ship, gameBoard, player };
